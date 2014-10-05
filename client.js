@@ -1,6 +1,6 @@
 var net = require('net');
 
-function leagueController(opts) {
+function LeagueController(opts) {
   this.opts = {
     url: '',
     port: '1000',
@@ -25,69 +25,65 @@ function leagueController(opts) {
   });
 }
 
-leagueController.prototype._send = function(command) {
+LeagueController.prototype._send = function(command) {
   this.client.write(command, 'utf16le');
   console.log('sent: '+command);
 }
 
-leagueController.prototype._end = function() {
+LeagueController.prototype._end = function() {
   this.client.end();
 }
 
 LeagueController.prototype.FocusSummoner1Blue = function() {
-  win._send('FOCUSSUMMONER1BLUE');
+  this._send('FOCUSSUMMONER1BLUE');
 }
 LeagueController.prototype.FocusSummoner2Blue = function() {
-  win._send('FOCUSSUMMONER2BLUE');
+  this._send('FOCUSSUMMONER2BLUE');
 }
 LeagueController.prototype.FocusSummoner3Blue = function() {
-  win._send('FOCUSSUMMONER3BLUE');
+  this._send('FOCUSSUMMONER3BLUE');
 }
 LeagueController.prototype.FocusSummoner4Blue = function() {
-  win._send('FOCUSSUMMONER4BLUE');
+  this._send('FOCUSSUMMONER4BLUE');
 }
 LeagueController.prototype.FocusSummoner5Blue = function() {
-  win._send('FOCUSSUMMONER5BLUE');
+  this._send('FOCUSSUMMONER5BLUE');
 }
 LeagueController.prototype.FocusSummoner1Purple = function() {
-  win._send('FOCUSSUMMONER1PURPLE');
+  this._send('FOCUSSUMMONER1PURPLE');
 }
 LeagueController.prototype.FocusSummoner2Purple = function() {
-  win._send('FOCUSSUMMONER2PURPLE');
+  this._send('FOCUSSUMMONER2PURPLE');
 }
 LeagueController.prototype.FocusSummoner3Purple = function() {
-  win._send('FOCUSSUMMONER3PURPLE');
+  this._send('FOCUSSUMMONER3PURPLE');
 }
 LeagueController.prototype.FocusSummoner4Purple = function() {
-  win._send('FOCUSSUMMONER4PURPLE');
+  this._send('FOCUSSUMMONER4PURPLE');
 }
 LeagueController.prototype.FocusSummoner5Purple = function() {
-  win._send('FOCUSSUMMONER5PURPLE');
+  this._send('FOCUSSUMMONER5PURPLE');
 }
 LeagueController.prototype.FogOfWarBlue = function() {
-  win._send('FOGOFWARBLUE');
+  this._send('FOGOFWARBLUE');
 }
 LeagueController.prototype.FogOfWarPurple = function() {
-  win._send('FOGOFWARPURPLE');
+  this._send('FOGOFWARPURPLE');
 }
 LeagueController.prototype.FogOfWarAll = function() {
-  win._send('FOGOFWARALL');
+  this._send('FOGOFWARALL');
 }
 LeagueController.prototype.ToggleTeamfightUI = function() {
-  win._send('TOGGLETEAMFIGHTUI');
+  this._send('TOGGLETEAMFIGHTUI');
 }
 LeagueController.prototype.ToggleScoreboard = function() {
-  win._send('TOGGLESCOREBOARD');
+  this._send('TOGGLESCOREBOARD');
 }
 LeagueController.prototype.ToggleUI = function() {
-  win._send('TOGGLEUI');
+  this._send('TOGGLEUI');
 }
 LeagueController.prototype._ReleaseKey = function() {
-  win._send('RELEASEKEY');
+  this._send('RELEASEKEY');
 }
 
-process.on('exit', function(){win._end();});
-process.on('SIGINT', function(){win._end();});
-process.on('uncaughtException', function(){win._end();});
-
-module.exports = leagueController
+module.exports = LeagueController
