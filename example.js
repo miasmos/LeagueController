@@ -3,7 +3,7 @@ var lc = new leagueController();
 
 setTimeout(function() {
   lc.FocusSummoner1Blue();
-  lc.ForOfWarBlue();
+  lc.FogOfWarBlue();
 },5000);
 
 process.on('exit', function(){lc._end();});
