@@ -101,17 +101,14 @@ loop 512
     }
 msgbox %summary%
 return
-sendKey(key,hold=0) {
-    If (keyDown != "") {
-        Send {%keyDown% Up}
-        keyDown = ""
-    }
-    If (hold = 1) {
-        keyDown = %key%
-        Send {%keyDown% Down}
+sendKey(key,double=0) {
+    If (double = 1) {
+        keywait, %key%
+        sleep, 50
+        sendinput %key%
     }
     Else {
-        Send {%key%}
+        Send %key%
     }
     return
 }
@@ -362,11 +359,13 @@ Server(sEvent, iSocket = 0, sName = 0, sAddr = 0, sPort = 0, ByRef bRecvData = 0
             sendKey(X,0)
         }
         Else If (bRecvData = "TOGGLEUI") {
-            sendKey(!A,0)
+            sendKey(H,0)
         }
-        Else If (bRecvData = "RELEASEKEY") {
-            Send {%keyDown% Up}
-            keyDown = ""
+        Else If (bRecvData = "MANUALCAMERA") {
+            sendKey(S,0)
+        }
+        Else If (bRecvData = "DIRECTEDCAMERA") {
+            sendKey(D,0)
         }
         done=1
         }

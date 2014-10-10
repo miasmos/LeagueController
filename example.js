@@ -4,6 +4,7 @@ var lc = new leagueController();
 setTimeout(function() {
   lc.FocusSummoner1Blue();
   lc.FogOfWarBlue();
+  lc.ToggleUI();
 },5000);
 
 process.on('exit', function(){lc._end();});

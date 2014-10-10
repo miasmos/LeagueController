@@ -12,7 +12,7 @@ function LeagueController(opts) {
     if (err) {
       console.log('connect failed: '+err);
     } else {
-      console.log('connected to '+self.opts.host+':'+self.opts.port);
+      //console.log('connected to '+self.opts.host+':'+self.opts.port);
     }
 
     self.client.on('data', function(data) {
@@ -20,7 +20,7 @@ function LeagueController(opts) {
     });
 
     self.client.on('end', function() {
-      console.log('connection closed');
+      //console.log('connection closed');
     });
   });
 }
@@ -82,8 +82,10 @@ LeagueController.prototype.ToggleScoreboard = function() {
 LeagueController.prototype.ToggleUI = function() {
   this._send('TOGGLEUI');
 }
-LeagueController.prototype._ReleaseKey = function() {
-  this._send('RELEASEKEY');
+LeagueController.prototype.DirectedCamera = function() {
+  this._send('DIRECTEDCAMERA');
 }
-
+LeagueController.prototype.ManualCamera = function() {
+  this._send('MANUALCAMERA');
+}
 module.exports = LeagueController
